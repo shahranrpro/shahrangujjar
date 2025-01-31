@@ -1,0 +1,229 @@
+/* Reset and Base Styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+  
+  html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  #main {
+    width: 100%;
+    height: 100%;
+  }
+
+  #right-circle {
+    position: fixed;
+    top: -3%;
+    right: 0%;
+    width: 100px;
+    height: 100px;
+    background-color: greenyellow;
+    border-radius: 0 0 0 100%;
+    padding: 10px;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  #right-circle:hover {
+    background-color: white;
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  #right-circle i {
+    font-size: 50px;
+    color: rgb(255, 255, 255);
+    z-index: 2;
+    padding: 0 30px;
+    transition: color 0.3s ease;
+  }
+
+  #right-circle:hover i {
+    color: black;
+  }
+
+  /* Section Common Styles */
+  .Home, .Products, .Contact, .About {
+    position: relative; /* Required for pseudo-elements */
+    width: 100%;
+    height: 25%; /* Divide screen height evenly */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Changed to align left */
+    padding-left: 20px; /* Added left padding */
+    transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out;
+  }
+  
+  .Home {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255); /* Default text color */
+  }
+  
+  .Products {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+  }
+  
+  .Contact {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+  }
+  
+  .About {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+  }
+  
+  /* Text Styling */
+  .text {
+    position: relative;
+    z-index: 2; /* Ensure text stays visible above animations */
+    font-size: 6vw;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  /* Overlay Animation with Pseudo Elements */
+  .Home::before, .Products::before, .Contact::before, .About::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0; /* Start with 0 width for the animation */
+    background-color: currentColor; /* Use text color for animation */
+    z-index: 1; /* Sit below the text */
+    transition: width 0.5s ease-in-out;
+  }
+  
+  /* Hover Effects */
+  .Home:hover, .Products:hover, .Contact:hover, .About:hover {
+    background-color: currentColor; /* Invert the section's background color */
+    color: rgb(255, 255, 255); /* Change text color for better contrast */
+  }
+  
+  .Home:hover::before, .Products:hover::before, .Contact:hover::before, .About:hover::before {
+    width: 100%; /* Expand the overlay from left to right */
+  }
+  
+  .Home:hover .text, .Products:hover .text, .Contact:hover .text, .About:hover .text {
+    color: #000; /* Change text color to black on hover */
+  }
+
+  /* Keep text black while hovering over the section */
+  .Home:hover .text, 
+  .Products:hover .text, 
+  .Contact:hover .text, 
+  .About:hover .text {
+    color: #000;
+  }
+
+
+
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+  #main {
+      display: flex;
+      flex-direction: column;
+      margin-left: 7px;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+          transform: translate(100%, -100%);
+      }
+      to {
+          opacity: 1;
+          transform: translate(0, 0);
+      }
+  }
+
+  #right-circle {
+    position: absolute;
+    top: -4%;
+    right: -8%;
+    width: 100px;
+    height: 100px;
+    background-color: greenyellow;
+    border-radius: 0 0 0 70%;
+    padding:0px 0px 0 0 ;
+    margin: 10px 25px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    animation: slideInTopRight 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  #right-circle i {
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+    z-index: 2;
+    animation: slideInTopRight 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .Home {
+      margin-top: 13px;
+      animation: slideInTopRight 0.5s ease-in-out forwards;
+      animation-delay: 0.2s;
+      opacity: 0;
+  }
+
+  .Products {
+      animation: slideInTopRight 0.5s ease-in-out forwards;
+      animation-delay: 0.4s;
+      opacity: 0;
+  }
+
+  .Contact {
+      animation: slideInTopRight 0.5s ease-in-out forwards;
+      animation-delay: 0.6s;
+      opacity: 0;
+  }
+
+  .About {
+      animation: slideInTopRight 0.5s ease-in-out forwards;
+      animation-delay: 0.8s;
+      opacity: 0;
+  }
+
+  @keyframes slideInTopRight {
+      from {
+          transform: translate(100%, -100%);
+          opacity: 0;
+      }
+      to {
+          transform: translate(0, 0);
+          opacity: 1;
+      }
+  }
+
+  .Home, .Products, .Contact, .About {
+      height: 19vh;
+      width: 96vw;
+      margin-bottom: 10px;
+      justify-content: center;
+      border-radius: 100px;
+  }
+
+  .text {
+      font-size: 10vw;
+  }
+}
+
+
