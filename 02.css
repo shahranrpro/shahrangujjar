@@ -547,6 +547,7 @@ html, body{
     justify-content: center;
     position: relative;
     overflow: hidden;
+    cursor:pointer;
 }
 
 .leftbotton::before {
@@ -587,6 +588,7 @@ html, body{
     justify-content: center;
     position: relative;
     overflow: hidden;
+    cursor:pointer;
 }
 
 .rightbotton::before {
